@@ -2,6 +2,11 @@
 import requests
 import time
 from datetime import datetime
+from pathlib import Path
+
+# Save trade_memory.txt AND error_log.txtin the same folder where this Python file is located
+trade_memory_file = Path(__file__).parent / "trade_memory.txt"
+error_log_file = Path(__file__).parent / "error_log.txt"
 
 # Function to create a timestamp
 def get_timestamp():
@@ -34,7 +39,7 @@ for i in range(5):
 
     try:
         # Coinbase BTC price API
-        url = "https://api.coinbase.com/v2/prices/spot?currency=USD"
+        url = "2https://api.coinbase.com/v2/prices/spot?currency=USD"
 
         # Request BTC data with timeout protection
         response = requests.get(url, timeout=10)
@@ -55,7 +60,7 @@ for i in range(5):
         timestamp = get_timestamp()
 
         # Save successful trade monitoring record
-        with open("./Day 09/trade_memory.txt", "a") as memory_file:
+        with open(trade_memory_file, "a") as memory_file:
             memory_file.write(f"Scan Number: {scan_number}\n")
             memory_file.write(f"Timestamp: {timestamp}\n")
             memory_file.write(f"BTC Price: {btc_price}\n")
@@ -79,7 +84,7 @@ for i in range(5):
         error_message = str(error)
 
         # Save error details
-        with open("./Day 09/error_log.txt", "a") as error_file:
+        with open(error_log_file, "a") as error_file:
             error_file.write(f"Scan Number: {scan_number}\n")
             error_file.write(f"Timestamp: {timestamp}\n")
             error_file.write(f"Error Type: {error_type}\n")

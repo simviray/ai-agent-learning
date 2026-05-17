@@ -22,3 +22,28 @@ Timestamp: 2026-05-17 00:33:58
 Error Type: InvalidSchema
 Message: No connection adapters were found for '1https://api.coinbase.com/v2/prices/spot?currency=USD'
 ----------------------
+Scan Number: 1
+Timestamp: 2026-05-17 17:39:20
+Error Type: InvalidSchema
+Message: No connection adapters were found for '2https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
+Scan Number: 2
+Timestamp: 2026-05-17 17:39:25
+Error Type: InvalidSchema
+Message: No connection adapters were found for '2https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
+Scan Number: 3
+Timestamp: 2026-05-17 17:39:30
+Error Type: InvalidSchema
+Message: No connection adapters were found for '2https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
+Scan Number: 4
+Timestamp: 2026-05-17 17:39:35
+Error Type: InvalidSchema
+Message: No connection adapters were found for '2https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
+Scan Number: 5
+Timestamp: 2026-05-17 17:39:40
+Error Type: InvalidSchema
+Message: No connection adapters were found for '2https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
