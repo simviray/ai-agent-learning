@@ -4,5 +4,6 @@ url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=u
 
 response = requests.get(url)
 
-print(response.status_code)
-print(response.text)
+data = response.json()
+
+print(data)
