@@ -1,0 +1,24 @@
+Timestamp: 2026-05-17 00:27:57
+Error Type: ZeroDivisionError
+Message: division by zero
+----------------------
+Timestamp: 2026-05-17 00:33:38
+Error Type: InvalidSchema
+Message: No connection adapters were found for '1https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
+Timestamp: 2026-05-17 00:33:43
+Error Type: InvalidSchema
+Message: No connection adapters were found for '1https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
+Timestamp: 2026-05-17 00:33:48
+Error Type: InvalidSchema
+Message: No connection adapters were found for '1https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
+Timestamp: 2026-05-17 00:33:53
+Error Type: InvalidSchema
+Message: No connection adapters were found for '1https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
+Timestamp: 2026-05-17 00:33:58
+Error Type: InvalidSchema
+Message: No connection adapters were found for '1https://api.coinbase.com/v2/prices/spot?currency=USD'
+----------------------
