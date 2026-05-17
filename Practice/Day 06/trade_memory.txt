@@ -1,0 +1,7 @@
+BTC Price: 78034.285
+Decision: Risk Zone
+----------------------
+Timestamp: 2026-05-16 21:22:39
+BTC Price: 78029.015
+Decision: Risk Zone
+----------------------
