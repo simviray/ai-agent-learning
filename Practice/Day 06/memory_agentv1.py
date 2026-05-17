@@ -1,5 +1,9 @@
 from datetime import datetime
 import requests
+from pathlib import Path
+
+# Save trade_memory.txt in the same folder where this Python file is located
+memory_file = Path(__file__).parent / "trade_memory.txt"
 
 url = "https://api.coinbase.com/v2/prices/spot?currency=USD"
 
@@ -24,7 +28,7 @@ decision = market_agent(btc_price)
 timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Save to memory file
-with open("trade_memory.txt", "a") as memory:
+with open(memory_file, "a") as memory:
     memory.write(f"Timestamp: {timestamp}\n")
     memory.write(f"BTC Price: {btc_price}\n")
     memory.write(f"Decision: {decision}\n")
@@ -32,3 +36,4 @@ with open("trade_memory.txt", "a") as memory:
 
 print("AI Agent Decision:", decision)
 print("Memory stored successfully.")
+print("Saved file location:", memory_file)
