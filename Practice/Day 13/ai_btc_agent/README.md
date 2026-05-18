@@ -1,12 +1,3 @@
-Replace your current:
-
-```text id="x5v9qm"
-README.md
-```
-
-with this updated professional version:
-
-````markdown id="f7r2kn"
 # AI BTC Agent
 
 ## Project Purpose
