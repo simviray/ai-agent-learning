@@ -1,0 +1,50 @@
+Scan Number: 1
+Timestamp: 2026-05-17 20:12:55
+BTC Price: 76992.995
+Decision: Risk Zone
+----------------------
+Scan Number: 2
+Timestamp: 2026-05-17 20:13:00
+BTC Price: 76995.695
+Decision: Risk Zone
+----------------------
+Scan Number: 3
+Timestamp: 2026-05-17 20:13:06
+BTC Price: 76995.695
+Decision: Risk Zone
+----------------------
+Scan Number: 4
+Timestamp: 2026-05-17 20:13:11
+BTC Price: 76995.695
+Decision: Risk Zone
+----------------------
+Scan Number: 5
+Timestamp: 2026-05-17 20:13:16
+BTC Price: 76996.645
+Decision: Risk Zone
+----------------------
+Scan Number: 1
+Timestamp: 2026-05-17 20:17:24
+BTC Price: 77213.735
+Decision: Risk Zone
+----------------------
+Scan Number: 2
+Timestamp: 2026-05-17 20:17:29
+BTC Price: 77213.735
+Decision: Risk Zone
+----------------------
+Scan Number: 3
+Timestamp: 2026-05-17 20:17:34
+BTC Price: 77213.735
+Decision: Risk Zone
+----------------------
+Scan Number: 4
+Timestamp: 2026-05-17 20:17:40
+BTC Price: 77212.56
+Decision: Risk Zone
+----------------------
+Scan Number: 5
+Timestamp: 2026-05-17 20:17:45
+BTC Price: 77212.56
+Decision: Risk Zone
+----------------------
