@@ -579,3 +579,256 @@ BTC_API_URL=https://api.coinbase.com/v2/prices/spot?currency=USD
 Then update your code so the API URL also comes from `.env`.
 
 This makes your project even more configurable.
+
+# Bonus Task — Move the BTC API URL into `.env`
+
+## Goal
+
+Make your AI system MORE configurable by moving the API URL outside the Python code.
+
+This is how professional systems manage:
+
+* APIs
+* databases
+* cloud endpoints
+* AI model URLs
+* configuration settings
+
+---
+
+# STEP 1 — Update Your `.env` File
+
+Open:
+
+```text id="9c3lqv"
+.env
+```
+
+Add this line:
+
+```text id="u1m9zk"
+BTC_API_URL=https://api.coinbase.com/v2/prices/spot?currency=USD
+```
+
+Your `.env` file should now look like:
+
+```text id="y4v8tr"
+SCAN_LIMIT=5
+SCAN_DELAY=5
+BTC_BUY_LEVEL=100000
+BTC_STRONG_BUY_LEVEL=110000
+BTC_HOLD_LEVEL=90000
+BTC_API_URL=https://api.coinbase.com/v2/prices/spot?currency=USD
+```
+
+---
+
+# Concept Explanation — Why This Is Better
+
+Before:
+
+```python id="mr5z2x"
+url = "https://api.coinbase.com/v2/prices/spot?currency=USD"
+```
+
+The API URL was hard-coded directly into Python.
+
+Problem:
+
+* harder to change,
+* duplicated in multiple files,
+* less flexible.
+
+Now:
+the API URL becomes configurable.
+
+You can later switch APIs WITHOUT changing code.
+
+Example future upgrades:
+
+* Coinbase API
+* Binance API
+* Kraken API
+* Hyperliquid API
+
+Only `.env` changes.
+
+---
+
+# STEP 2 — Update Your Python Code
+
+## Update `config_btc_agent.py`
+
+Replace this OLD section:
+
+```python id="v0w6pt"
+# Coinbase API endpoint
+url = "https://api.coinbase.com/v2/prices/spot?currency=USD"
+```
+
+With this NEW version:
+
+```python id="n8q4ym"
+# Read BTC API URL from .env file
+BTC_API_URL = os.getenv(
+    "BTC_API_URL",
+    "https://api.coinbase.com/v2/prices/spot?currency=USD"
+)
+```
+
+---
+
+# STEP 3 — Update `get_btc_price()`
+
+Replace your OLD function:
+
+```python id="g7r2qx"
+def get_btc_price():
+
+    url = "https://api.coinbase.com/v2/prices/spot?currency=USD"
+
+    response = requests.get(url, timeout=10)
+```
+
+With this NEW version:
+
+```python id="n2v9kp"
+# Function to retrieve BTC price
+def get_btc_price():
+
+    # Request BTC price data using URL from .env
+    response = requests.get(BTC_API_URL, timeout=10)
+
+    # Raise error if request fails
+    response.raise_for_status()
+
+    # Convert API response into JSON
+    data = response.json()
+
+    # Extract BTC price
+    btc_price = float(data["data"]["amount"])
+
+    # Return BTC price
+    return btc_price
+```
+
+---
+
+# FULL UPDATED SECTION
+
+Add this near your `.env` settings:
+
+```python id="m4t8zs"
+# Read settings from .env file
+SCAN_LIMIT = int(os.getenv("SCAN_LIMIT", 5))
+SCAN_DELAY = int(os.getenv("SCAN_DELAY", 5))
+
+BTC_BUY_LEVEL = float(os.getenv("BTC_BUY_LEVEL", 100000))
+BTC_STRONG_BUY_LEVEL = float(os.getenv("BTC_STRONG_BUY_LEVEL", 110000))
+BTC_HOLD_LEVEL = float(os.getenv("BTC_HOLD_LEVEL", 90000))
+
+# Read BTC API URL from .env
+BTC_API_URL = os.getenv(
+    "BTC_API_URL",
+    "https://api.coinbase.com/v2/prices/spot?currency=USD"
+)
+```
+
+---
+
+# Concept Explanation — Default Fallback
+
+This part:
+
+```python id="z8k5qn"
+os.getenv("BTC_API_URL", "default_url")
+```
+
+Means:
+
+```text id="b2v7rm"
+Try to get BTC_API_URL from .env.
+If it does not exist, use the default URL.
+```
+
+This prevents crashes if `.env` is missing.
+
+Professional systems ALWAYS use safe defaults.
+
+---
+
+# Why This Is Professional Engineering
+
+You are now separating:
+
+| Area        | Responsibility  |
+| ----------- | --------------- |
+| `.env`      | Configuration   |
+| Python code | Logic           |
+| Logs folder | Monitoring data |
+
+This is how:
+
+* enterprise AI systems,
+* cloud platforms,
+* AI agents,
+* and backend services
+  are organized professionally.
+
+---
+
+# Your Project Structure Now
+
+```text id="j5x8cn"
+project/
+│
+├── .env
+├── .gitignore
+├── config_btc_agent.py
+│
+└── logs/
+    ├── trade_memory.txt
+    └── error_log.txt
+```
+
+---
+
+# What You Just Learned
+
+Today’s bonus task introduced:
+
+* configurable architecture,
+* environment-driven systems,
+* safer API management,
+* and cleaner project design.
+
+This is VERY important later for:
+
+* Azure AI
+* OpenAI APIs
+* AI agents
+* cloud deployment
+* Docker containers
+* production systems
+
+---
+
+# Advanced Thinking Question
+
+Think about this:
+
+> If your AI agent later needs:
+>
+> * multiple APIs,
+> * multiple AI models,
+> * database connections,
+> * and cloud services,
+>
+> how useful would centralized configuration become?
+
+Hint:
+Large systems may have:
+
+* dozens of environment variables,
+* multiple environments,
+* and deployment configurations.
