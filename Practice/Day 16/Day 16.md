@@ -405,3 +405,144 @@ You will add:
 * `XRP_HOLD_LEVEL`
 
 Then add one new dictionary inside `ASSETS` in `config.py`.
+
+## 1. Update `.env`
+
+Add these XRP settings:
+
+```text id="g8m2rp"
+XRP_API_URL=https://api.coinbase.com/v2/prices/XRP-USD/spot
+
+XRP_BUY_LEVEL=2.50
+XRP_STRONG_BUY_LEVEL=3.00
+XRP_HOLD_LEVEL=2.00
+```
+
+Your `.env` now includes:
+
+```text id="f5v7kn"
+SCAN_LIMIT=5
+SCAN_DELAY=5
+
+BTC_API_URL=https://api.coinbase.com/v2/prices/spot?currency=USD
+ETH_API_URL=https://api.coinbase.com/v2/prices/ETH-USD/spot
+SOL_API_URL=https://api.coinbase.com/v2/prices/SOL-USD/spot
+XRP_API_URL=https://api.coinbase.com/v2/prices/XRP-USD/spot
+
+BTC_BUY_LEVEL=100000
+BTC_STRONG_BUY_LEVEL=110000
+BTC_HOLD_LEVEL=90000
+
+ETH_BUY_LEVEL=3000
+ETH_STRONG_BUY_LEVEL=3500
+ETH_HOLD_LEVEL=2500
+
+SOL_BUY_LEVEL=180
+SOL_STRONG_BUY_LEVEL=220
+SOL_HOLD_LEVEL=140
+
+XRP_BUY_LEVEL=2.50
+XRP_STRONG_BUY_LEVEL=3.00
+XRP_HOLD_LEVEL=2.00
+```
+
+---
+
+# 2. Update `config.py`
+
+Add this new XRP dictionary inside `ASSETS`:
+
+```python id="x9q4tw"
+    {
+        # Asset name
+        "name": "XRP",
+
+        # API URL from .env
+        "api_url": os.getenv("XRP_API_URL"),
+
+        # XRP decision levels from .env
+        "strong_buy_level": float(os.getenv("XRP_STRONG_BUY_LEVEL", 3.00)),
+        "buy_level": float(os.getenv("XRP_BUY_LEVEL", 2.50)),
+        "hold_level": float(os.getenv("XRP_HOLD_LEVEL", 2.00))
+    }
+```
+
+---
+
+# Full Example of `ASSETS`
+
+```python id="v3m8zy"
+ASSETS = [
+    {
+        "name": "BTC",
+        "api_url": os.getenv("BTC_API_URL"),
+        "strong_buy_level": float(os.getenv("BTC_STRONG_BUY_LEVEL", 110000)),
+        "buy_level": float(os.getenv("BTC_BUY_LEVEL", 100000)),
+        "hold_level": float(os.getenv("BTC_HOLD_LEVEL", 90000))
+    },
+    {
+        "name": "ETH",
+        "api_url": os.getenv("ETH_API_URL"),
+        "strong_buy_level": float(os.getenv("ETH_STRONG_BUY_LEVEL", 3500)),
+        "buy_level": float(os.getenv("ETH_BUY_LEVEL", 3000)),
+        "hold_level": float(os.getenv("ETH_HOLD_LEVEL", 2500))
+    },
+    {
+        "name": "SOL",
+        "api_url": os.getenv("SOL_API_URL"),
+        "strong_buy_level": float(os.getenv("SOL_STRONG_BUY_LEVEL", 220)),
+        "buy_level": float(os.getenv("SOL_BUY_LEVEL", 180)),
+        "hold_level": float(os.getenv("SOL_HOLD_LEVEL", 140))
+    },
+    {
+        "name": "XRP",
+        "api_url": os.getenv("XRP_API_URL"),
+        "strong_buy_level": float(os.getenv("XRP_STRONG_BUY_LEVEL", 3.00)),
+        "buy_level": float(os.getenv("XRP_BUY_LEVEL", 2.50)),
+        "hold_level": float(os.getenv("XRP_HOLD_LEVEL", 2.00))
+    }
+]
+```
+
+---
+
+# 3. Run the Project
+
+Run:
+
+```bash id="q2w7vn"
+python main.py
+```
+
+Your AI monitor now supports:
+
+```text id="b6x9pk"
+BTC
+ETH
+SOL
+XRP
+```
+
+---
+
+# Concept Explanation — Why This Design Is Powerful
+
+Notice something important:
+
+You did NOT need to update:
+
+* `main.py`
+* `market_data.py`
+* `agent_logic.py`
+* `logger.py`
+
+You ONLY updated:
+
+* `.env`
+* `config.py`
+
+That means your architecture is becoming:
+
+## scalable and modular.
+
+This is how professional systems are designed.
